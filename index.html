@@ -1,0 +1,1037 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scalable Technologies | Coming Soon</title>
+
+    <meta name="description"
+          content="Scalable Technologies is building something amazing. Stay tuned.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* =========================================
+           GLOBAL
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #050816;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           ANIMATED BACKGROUND
+        ========================================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -5;
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0, 140, 255, 0.15),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(132, 0, 255, 0.16),
+                    transparent 30%
+                ),
+                #050816;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.45;
+            animation: floatBlob 15s ease-in-out infinite alternate;
+        }
+
+        .blob.one {
+            width: 450px;
+            height: 450px;
+            background: #0066ff;
+            top: -150px;
+            left: -100px;
+        }
+
+        .blob.two {
+            width: 500px;
+            height: 500px;
+            background: #7b00ff;
+            right: -180px;
+            bottom: -150px;
+            animation-delay: 3s;
+        }
+
+        .blob.three {
+            width: 300px;
+            height: 300px;
+            background: #00d4ff;
+            left: 45%;
+            top: 35%;
+            opacity: 0.18;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatBlob {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(70px, -50px) scale(1.15);
+            }
+        }
+
+
+        /* =========================================
+           PARTICLES
+        ========================================= */
+
+        #particles {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            animation: particleMove linear infinite;
+        }
+
+        @keyframes particleMove {
+            from {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 0.8;
+            }
+
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        header {
+            width: 100%;
+            padding: 28px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 20;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: linear-gradient(
+                90deg,
+                #00d4ff,
+                #6c63ff,
+                #b967ff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 12px;
+            color: #b8bfd3;
+            padding: 9px 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(15px);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #00ff9d;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ff9d;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.6);
+                opacity: 0.5;
+            }
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        main {
+            min-height: calc(100vh - 90px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px 100px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 950px;
+            text-align: center;
+        }
+
+
+        /* =========================================
+           BADGE
+        ========================================= */
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 17px;
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+
+            backdrop-filter: blur(20px);
+
+            color: #cdd3e6;
+            font-size: 12px;
+            font-weight: 500;
+
+            animation: fadeDown 1s ease forwards;
+        }
+
+        .badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00d4ff;
+            box-shadow: 0 0 12px #00d4ff;
+        }
+
+
+        /* =========================================
+           TITLE
+        ========================================= */
+
+        h1 {
+            margin-top: 30px;
+
+            font-size: clamp(48px, 8vw, 100px);
+            line-height: 0.95;
+
+            font-weight: 800;
+            letter-spacing: -5px;
+
+            animation: fadeUp 1s 0.2s ease both;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #ffffff 10%,
+                #7ddfff 40%,
+                #8b6cff 70%,
+                #e28cff 100%
+            );
+
+            background-size: 250% auto;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation:
+                gradientMove 6s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            to {
+                background-position: 250% center;
+            }
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+        .description {
+            max-width: 650px;
+            margin: 28px auto 0;
+
+            font-size: 16px;
+            line-height: 1.8;
+            color: #9da6bd;
+
+            animation: fadeUp 1s 0.4s ease both;
+        }
+
+
+        /* =========================================
+           COUNTDOWN
+        ========================================= */
+
+        .countdown {
+            margin: 45px auto 0;
+
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+
+            animation: fadeUp 1s 0.6s ease both;
+        }
+
+        .time-box {
+            width: 100px;
+            height: 100px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.09),
+                    rgba(255,255,255,0.025)
+                );
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.08),
+                0 20px 60px rgba(0,0,0,0.2);
+
+            backdrop-filter: blur(20px);
+
+            transition: 0.35s ease;
+        }
+
+        .time-box:hover {
+            transform: translateY(-8px) scale(1.03);
+
+            border-color: rgba(0,212,255,0.4);
+
+            box-shadow:
+                0 15px 50px rgba(0,150,255,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.12);
+        }
+
+        .time-number {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .time-label {
+            margin-top: 6px;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #79839d;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .actions {
+            margin-top: 42px;
+
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+
+            animation: fadeUp 1s 0.8s ease both;
+        }
+
+        .contact-button {
+            position: relative;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 15px 25px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            background:
+                linear-gradient(
+                    100deg,
+                    #007cf0,
+                    #6c3cff,
+                    #c13cff
+                );
+
+            background-size: 200% auto;
+
+            box-shadow:
+                0 12px 35px rgba(91,70,255,0.25);
+
+            transition: 0.35s ease;
+
+            animation: buttonGradient 4s linear infinite;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 18px 50px rgba(91,70,255,0.4);
+        }
+
+        @keyframes buttonGradient {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+
+        /* =========================================
+           CONTACT SIDE TAB
+        ========================================= */
+
+        .contact-tab {
+            position: fixed;
+
+            right: 0;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            z-index: 100;
+
+            writing-mode: vertical-rl;
+
+            padding: 20px 13px;
+
+            border-radius: 14px 0 0 14px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #007cf0,
+                    #6c3cff
+                );
+
+            color: white;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            box-shadow:
+                -5px 0 30px rgba(80,70,255,0.25);
+
+            transition: 0.35s ease;
+        }
+
+        .contact-tab:hover {
+            padding-right: 18px;
+            box-shadow:
+                -10px 0 45px rgba(80,70,255,0.4);
+        }
+
+
+        /* =========================================
+           CONTACT PANEL
+        ========================================= */
+
+        .contact-panel {
+            position: fixed;
+
+            right: -400px;
+            top: 0;
+
+            width: 380px;
+            height: 100vh;
+
+            padding: 45px 35px;
+
+            background:
+                rgba(8,12,30,0.92);
+
+            border-left: 1px solid rgba(255,255,255,0.1);
+
+            backdrop-filter: blur(30px);
+
+            z-index: 110;
+
+            transition: right 0.5s cubic-bezier(.77,0,.18,1);
+
+            box-shadow:
+                -20px 0 70px rgba(0,0,0,0.4);
+        }
+
+        .contact-panel.active {
+            right: 0;
+        }
+
+        .close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.07);
+
+            cursor: pointer;
+
+            font-size: 20px;
+
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            transform: rotate(90deg);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .contact-panel h2 {
+            margin-top: 45px;
+
+            font-size: 34px;
+            letter-spacing: -1px;
+        }
+
+        .contact-panel p {
+            margin-top: 14px;
+
+            color: #8993ad;
+
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .email-card {
+            margin-top: 30px;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            transition: 0.3s;
+        }
+
+        .email-card:hover {
+            border-color: rgba(0,212,255,0.3);
+            transform: translateY(-4px);
+        }
+
+        .email-label {
+            color: #707b96;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .email-address {
+            display: block;
+
+            margin-top: 9px;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            text-decoration: none;
+
+            word-break: break-word;
+        }
+
+        .email-address:hover {
+            color: #54dfff;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            position: fixed;
+
+            bottom: 22px;
+
+            width: 100%;
+
+            text-align: center;
+
+            color: #555e75;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 22px 20px;
+            }
+
+            .status {
+                font-size: 9px;
+                padding: 7px 10px;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .description {
+                font-size: 14px;
+                padding: 0 15px;
+            }
+
+            .countdown {
+                gap: 7px;
+            }
+
+            .time-box {
+                width: 75px;
+                height: 80px;
+                border-radius: 16px;
+            }
+
+            .time-number {
+                font-size: 23px;
+            }
+
+            .time-label {
+                font-size: 7px;
+                letter-spacing: 1px;
+            }
+
+            .contact-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .contact-tab {
+                padding: 17px 10px;
+            }
+
+            footer {
+                bottom: 12px;
+                font-size: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background">
+        <div class="blob one"></div>
+        <div class="blob two"></div>
+        <div class="blob three"></div>
+    </div>
+
+    <!-- PARTICLES -->
+    <div id="particles"></div>
+
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="logo">
+            Scalable<span>Technologies</span>
+        </div>
+
+        <div class="status">
+            <div class="status-dot"></div>
+            Something big is coming
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <div class="container">
+
+            <div class="badge">
+                WEBSITE UNDER DEVELOPMENT
+            </div>
+
+
+            <h1>
+                We Are <br>
+                <span class="gradient-text">Coming Soon.</span>
+            </h1>
+
+
+            <p class="description">
+                Scalable Technologies is building something extraordinary.
+                We're working behind the scenes to bring you a powerful
+                digital experience. Stay tuned — we're almost ready.
+            </p>
+
+
+            <!-- COUNTDOWN -->
+            <div class="countdown">
+
+                <div class="time-box">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">Days</div>
+                </div>
+
+                <div class="time-box">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+
+                <div class="time-box">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+
+                <div class="time-box">
+                    <div class="time-number" id="seconds">00</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+
+            </div>
+
+
+            <!-- ACTION -->
+            <div class="actions">
+
+                <a href="mailto:scalabletechnologies11@gmail.com"
+                   class="contact-button">
+
+                    ✉ Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- CONTACT TAB -->
+    <div class="contact-tab" onclick="openContact()">
+        CONTACT US
+    </div>
+
+
+    <!-- CONTACT PANEL -->
+    <div class="contact-panel" id="contactPanel">
+
+        <div class="close" onclick="closeContact()">
+            ×
+        </div>
+
+        <h2>Let's Talk.</h2>
+
+        <p>
+            Have a project, question, or business opportunity?
+            We'd love to hear from you.
+        </p>
+
+
+        <div class="email-card">
+
+            <div class="email-label">
+                Email us
+            </div>
+
+            <a
+                class="email-address"
+                href="mailto:scalabletechnologies11@gmail.com">
+
+                scalabletechnologies11@gmail.com
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 SCALABLE TECHNOLOGIES • ALL RIGHTS RESERVED
+    </footer>
+
+
+    <script>
+
+        /* =========================================
+           COUNTDOWN
+           
+           Change this date to your launch date.
+        ========================================= */
+
+        const launchDate = new Date("December 31, 2026 23:59:59").getTime();
+
+
+        function updateCountdown() {
+
+            const now = new Date().getTime();
+
+            const distance = launchDate - now;
+
+
+            if (distance <= 0) {
+
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+
+                return;
+            }
+
+
+            const days = Math.floor(
+                distance / (1000 * 60 * 60 * 24)
+            );
+
+            const hours = Math.floor(
+                (distance % (1000 * 60 * 60 * 24))
+                / (1000 * 60 * 60)
+            );
+
+            const minutes = Math.floor(
+                (distance % (1000 * 60 * 60))
+                / (1000 * 60)
+            );
+
+            const seconds = Math.floor(
+                (distance % (1000 * 60))
+                / 1000
+            );
+
+
+            document.getElementById("days").innerText =
+                String(days).padStart(2, "0");
+
+            document.getElementById("hours").innerText =
+                String(hours).padStart(2, "0");
+
+            document.getElementById("minutes").innerText =
+                String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds").innerText =
+                String(seconds).padStart(2, "0");
+        }
+
+
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+
+
+
+        /* =========================================
+           CONTACT PANEL
+        ========================================= */
+
+        function openContact() {
+
+            document
+                .getElementById("contactPanel")
+                .classList.add("active");
+
+        }
+
+
+        function closeContact() {
+
+            document
+                .getElementById("contactPanel")
+                .classList.remove("active");
+
+        }
+
+
+
+        /* =========================================
+           PARTICLES
+        ========================================= */
+
+        const particleContainer =
+            document.getElementById("particles");
+
+
+        for (let i = 0; i < 70; i++) {
+
+            const particle =
+                document.createElement("div");
+
+            particle.className = "particle";
+
+
+            particle.style.left =
+                Math.random() * 100 + "%";
+
+
+            particle.style.animationDuration =
+                (8 + Math.random() * 15) + "s";
+
+
+            particle.style.animationDelay =
+                Math.random() * 10 + "s";
+
+
+            particle.style.opacity =
+                Math.random();
+
+
+            const size =
+                1 + Math.random() * 3;
+
+
+            particle.style.width = size + "px";
+            particle.style.height = size + "px";
+
+
+            particleContainer.appendChild(particle);
+        }
+
+
+        /* =========================================
+           CLOSE CONTACT PANEL WITH ESCAPE
+        ========================================= */
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+                closeContact();
+            }
+
+        });
+
+
+    </script>
+
+</body>
+</html>
+```
