@@ -1,228 +1,1048 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Scalable Technologies | Coming Soon</title>
+    <title>Scalable Technologies | Coming Soon</title>
 
-  <link rel="stylesheet" href="style.css">
+    <meta name="description"
+          content="Scalable Technologies is building something amazing. Stay tuned.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* =========================================
+           GLOBAL
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #050816;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           ANIMATED BACKGROUND
+        ========================================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -5;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0, 140, 255, 0.15),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(132, 0, 255, 0.16),
+                    transparent 30%
+                ),
+                #050816;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.45;
+            animation: floatBlob 15s ease-in-out infinite alternate;
+        }
+
+        .blob.one {
+            width: 450px;
+            height: 450px;
+            background: #0066ff;
+            top: -150px;
+            left: -100px;
+        }
+
+        .blob.two {
+            width: 500px;
+            height: 500px;
+            background: #7b00ff;
+            right: -180px;
+            bottom: -150px;
+            animation-delay: 3s;
+        }
+
+        .blob.three {
+            width: 300px;
+            height: 300px;
+            background: #00d4ff;
+            left: 45%;
+            top: 35%;
+            opacity: 0.18;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatBlob {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(70px, -50px) scale(1.15);
+            }
+        }
+
+
+        /* =========================================
+           PARTICLES
+        ========================================= */
+
+        #particles {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: particleMove linear infinite;
+        }
+
+        @keyframes particleMove {
+            from {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 0.8;
+            }
+
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        header {
+            width: 100%;
+            padding: 28px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            position: relative;
+            z-index: 20;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .company-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+
+            filter:
+                drop-shadow(0 0 12px rgba(0, 212, 255, 0.2));
+
+            transition: 0.35s ease;
+        }
+
+        .company-logo:hover {
+            transform: scale(1.08);
+            filter:
+                drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: linear-gradient(
+                90deg,
+                #00d4ff,
+                #6c63ff,
+                #b967ff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            font-size: 12px;
+            color: #b8bfd3;
+
+            padding: 9px 15px;
+
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.04);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            background: #00ff9d;
+            border-radius: 50%;
+
+            box-shadow: 0 0 15px #00ff9d;
+
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.6);
+                opacity: 0.5;
+            }
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        main {
+            min-height: calc(100vh - 90px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 50px 20px 100px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 950px;
+            text-align: center;
+        }
+
+
+        /* =========================================
+           BADGE
+        ========================================= */
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 10px 17px;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            backdrop-filter: blur(20px);
+
+            color: #cdd3e6;
+
+            font-size: 12px;
+            font-weight: 500;
+
+            animation: fadeDown 1s ease forwards;
+        }
+
+        .badge::before {
+            content: "";
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #00d4ff;
+
+            box-shadow: 0 0 12px #00d4ff;
+        }
+
+
+        /* =========================================
+           TITLE
+        ========================================= */
+
+        h1 {
+            margin-top: 30px;
+
+            font-size: clamp(48px, 8vw, 100px);
+            line-height: 0.95;
+
+            font-weight: 800;
+            letter-spacing: -5px;
+
+            animation: fadeUp 1s 0.2s ease both;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #ffffff 10%,
+                #7ddfff 40%,
+                #8b6cff 70%,
+                #e28cff 100%
+            );
+
+            background-size: 250% auto;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: gradientMove 6s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            to {
+                background-position: 250% center;
+            }
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+        .description {
+            max-width: 650px;
+
+            margin: 28px auto 0;
+
+            font-size: 16px;
+            line-height: 1.8;
+
+            color: #9da6bd;
+
+            animation: fadeUp 1s 0.4s ease both;
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .actions {
+            margin-top: 42px;
+
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+
+            animation: fadeUp 1s 0.6s ease both;
+        }
+
+        .contact-button {
+            position: relative;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 15px 25px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+            color: white;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            background: linear-gradient(
+                100deg,
+                #007cf0,
+                #6c3cff,
+                #c13cff
+            );
+
+            background-size: 200% auto;
+
+            box-shadow:
+                0 12px 35px rgba(91,70,255,0.25);
+
+            transition: 0.35s ease;
+
+            animation: buttonGradient 4s linear infinite;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 18px 50px rgba(91,70,255,0.4);
+        }
+
+        @keyframes buttonGradient {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+
+        /* =========================================
+           CONTACT SIDE TAB
+        ========================================= */
+
+        .contact-tab {
+            position: fixed;
+
+            right: 0;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            z-index: 100;
+
+            writing-mode: vertical-rl;
+
+            padding: 20px 13px;
+
+            border-radius: 14px 0 0 14px;
+
+            background: linear-gradient(
+                180deg,
+                #007cf0,
+                #6c3cff
+            );
+
+            color: white;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            box-shadow:
+                -5px 0 30px rgba(80,70,255,0.25);
+
+            transition: 0.35s ease;
+        }
+
+        .contact-tab:hover {
+            padding-right: 18px;
+
+            box-shadow:
+                -10px 0 45px rgba(80,70,255,0.4);
+        }
+
+
+        /* =========================================
+           CONTACT PANEL
+        ========================================= */
+
+        .contact-panel {
+            position: fixed;
+
+            right: -400px;
+            top: 0;
+
+            width: 380px;
+            height: 100vh;
+
+            padding: 45px 35px;
+
+            background:
+                rgba(8,12,30,0.92);
+
+            border-left:
+                1px solid rgba(255,255,255,0.1);
+
+            backdrop-filter: blur(30px);
+
+            z-index: 110;
+
+            transition:
+                right 0.5s cubic-bezier(.77,0,.18,1);
+
+            box-shadow:
+                -20px 0 70px rgba(0,0,0,0.4);
+        }
+
+        .contact-panel.active {
+            right: 0;
+        }
+
+        .close {
+            position: absolute;
+
+            top: 25px;
+            right: 25px;
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.07);
+
+            cursor: pointer;
+
+            font-size: 20px;
+
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            transform: rotate(90deg);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .contact-panel h2 {
+            margin-top: 45px;
+
+            font-size: 34px;
+            letter-spacing: -1px;
+        }
+
+        .contact-panel p {
+            margin-top: 14px;
+
+            color: #8993ad;
+
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .email-card {
+            margin-top: 30px;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.05);
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            transition: 0.3s;
+        }
+
+        .email-card:hover {
+            border-color:
+                rgba(0,212,255,0.3);
+
+            transform: translateY(-4px);
+        }
+
+        .email-label {
+            color: #707b96;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .email-address {
+            display: block;
+
+            margin-top: 9px;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            text-decoration: none;
+
+            word-break: break-word;
+        }
+
+        .email-address:hover {
+            color: #54dfff;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            position: fixed;
+
+            bottom: 22px;
+
+            width: 100%;
+
+            text-align: center;
+
+            color: #555e75;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 22px 20px;
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .company-logo {
+                width: 34px;
+                height: 34px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .status {
+                font-size: 9px;
+                padding: 7px 10px;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .description {
+                font-size: 14px;
+                padding: 0 15px;
+            }
+
+            .contact-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .contact-tab {
+                padding: 17px 10px;
+            }
+
+            footer {
+                bottom: 12px;
+                font-size: 8px;
+            }
+        }
+
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-  <!-- Animated Background -->
-  <div class="background">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
 
-  <!-- Particles -->
-  <div class="particles" id="particles"></div>
+    <!-- =========================================
+         BACKGROUND
+    ========================================= -->
 
-  <!-- Navigation -->
-  <header>
-    <div class="brand">
-      <img
-        src="logo.png"
-        alt="Scalable Technologies Logo"
-        class="company-logo"
-      >
-
-      <div class="logo">
-        Scalable<span>Technologies</span>
-      </div>
+    <div class="background">
+        <div class="blob one"></div>
+        <div class="blob two"></div>
+        <div class="blob three"></div>
     </div>
 
-    <div class="status">
-      <div class="status-dot"></div>
-      Something big is coming
+
+    <!-- =========================================
+         PARTICLES
+    ========================================= -->
+
+    <div id="particles"></div>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <!--
+                YOUR COMPANY LOGO
+                Keep logo.png in the same folder
+                as this HTML file.
+            -->
+
+            <img
+                src="logo.png"
+                alt="Scalable Technologies Logo"
+                class="company-logo"
+            >
+
+            <div class="logo">
+                Scalable<span>Technologies</span>
+            </div>
+
+        </div>
+
+
+        <div class="status">
+
+            <div class="status-dot"></div>
+
+            Something big is coming
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main>
+
+        <div class="container">
+
+
+            <!-- WEBSITE STATUS -->
+
+            <div class="badge">
+                WEBSITE UNDER DEVELOPMENT
+            </div>
+
+
+            <!-- MAIN TITLE -->
+
+            <h1>
+
+                We Are <br>
+
+                <span class="gradient-text">
+                    Coming Soon.
+                </span>
+
+            </h1>
+
+
+            <!-- DESCRIPTION -->
+
+            <p class="description">
+
+                Scalable Technologies is building something extraordinary.
+                We're working behind the scenes to bring you a powerful
+                digital experience. Stay tuned — we're almost ready.
+
+            </p>
+
+
+            <!-- CONTACT BUTTON -->
+
+            <div class="actions">
+
+                <a
+                    href="mailto:scalabletechnologies11@gmail.com"
+                    class="contact-button"
+                >
+
+                    <span>✉</span>
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         CONTACT SIDE TAB
+    ========================================= -->
+
+    <div
+        class="contact-tab"
+        onclick="openContact()"
+    >
+
+        CONTACT US
+
     </div>
-  </header>
 
 
-  <!-- Main Hero -->
-  <main>
-    <div class="container">
+    <!-- =========================================
+         CONTACT PANEL
+    ========================================= -->
 
-      <div class="badge">
-        WEBSITE UNDER DEVELOPMENT
-      </div>
+    <div
+        class="contact-panel"
+        id="contactPanel"
+    >
 
-      <h1>
-        We Are <br>
-        <span class="gradient-text">Coming Soon.</span>
-      </h1>
 
-      <p class="description">
-        Scalable Technologies is building something extraordinary.
-        We're working behind the scenes to bring you a powerful
-        digital experience. Stay tuned — we're almost ready.
-      </p>
+        <!-- CLOSE BUTTON -->
 
-      <div class="actions">
-        <a
-          href="mailto:scalabletechnologies11@gmail.com"
-          class="contact-button"
+        <div
+            class="close"
+            onclick="closeContact()"
         >
-          <span>✉</span>
-          Contact Us
-        </a>
-      </div>
+
+            ×
+
+        </div>
+
+
+        <!-- PANEL TITLE -->
+
+        <h2>
+            Let's Talk.
+        </h2>
+
+
+        <!-- PANEL DESCRIPTION -->
+
+        <p>
+
+            Have a project, question, or business opportunity?
+            We'd love to hear from you.
+
+        </p>
+
+
+        <!-- EMAIL CARD -->
+
+        <div class="email-card">
+
+            <div class="email-label">
+                Email us
+            </div>
+
+
+            <a
+                class="email-address"
+                href="mailto:scalabletechnologies11@gmail.com"
+            >
+
+                scalabletechnologies11@gmail.com
+
+            </a>
+
+        </div>
+
 
     </div>
-  </main>
 
 
-  <!-- Contact Tab -->
-  <button class="contact-tab" id="contactTab">
-    <span>Contact Us</span>
-  </button>
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer>
+
+        © 2026 SCALABLE TECHNOLOGIES — ALL RIGHTS RESERVED
+
+    </footer>
 
 
-  <!-- Contact Panel -->
-  <div class="contact-panel" id="contactPanel">
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
 
-    <button class="close-button" id="closePanel">
-      ×
-    </button>
-
-    <div class="panel-content">
-
-      <div class="panel-label">
-        GET IN TOUCH
-      </div>
-
-      <h2>
-        Let's Talk.
-      </h2>
-
-      <p>
-        Have a question, idea, or business inquiry?
-        We'd love to hear from you.
-      </p>
-
-      <a
-        href="mailto:scalabletechnologies11@gmail.com"
-        class="email-link"
-      >
-        <span class="email-icon">✉</span>
-        scalabletechnologies11@gmail.com
-      </a>
-
-    </div>
-
-  </div>
+    <script>
 
 
-  <!-- Overlay -->
-  <div class="overlay" id="overlay"></div>
+        /* =========================================
+           CONTACT PANEL
+        ========================================= */
 
+        function openContact() {
 
-  <!-- Footer -->
-  <footer>
-    © <span id="year"></span> Scalable Technologies. All rights reserved.
-  </footer>
+            document
+                .getElementById("contactPanel")
+                .classList.add("active");
 
-
-  <script>
-
-    /* Current Year */
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-
-    /* Contact Panel */
-    const contactTab =
-      document.getElementById("contactTab");
-
-    const contactPanel =
-      document.getElementById("contactPanel");
-
-    const closePanel =
-      document.getElementById("closePanel");
-
-    const overlay =
-      document.getElementById("overlay");
-
-
-    function openContact() {
-      contactPanel.classList.add("active");
-      overlay.classList.add("active");
-      document.body.classList.add("panel-open");
-    }
-
-
-    function closeContact() {
-      contactPanel.classList.remove("active");
-      overlay.classList.remove("active");
-      document.body.classList.remove("panel-open");
-    }
-
-
-    contactTab.addEventListener(
-      "click",
-      openContact
-    );
-
-    closePanel.addEventListener(
-      "click",
-      closeContact
-    );
-
-    overlay.addEventListener(
-      "click",
-      closeContact
-    );
-
-
-    /* Escape Key */
-    document.addEventListener(
-      "keydown",
-      function(event) {
-
-        if (event.key === "Escape") {
-          closeContact();
         }
 
-      }
-    );
+
+        function closeContact() {
+
+            document
+                .getElementById("contactPanel")
+                .classList.remove("active");
+
+        }
 
 
-    /* Floating Particles */
-    const particlesContainer =
-      document.getElementById("particles");
+        /* =========================================
+           CLOSE CONTACT PANEL WITH ESCAPE
+        ========================================= */
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                closeContact();
+
+            }
+
+        });
 
 
-    for (let i = 0; i < 45; i++) {
+        /* =========================================
+           PARTICLES
+        ========================================= */
 
-      const particle =
-        document.createElement("div");
+        const particleContainer =
+            document.getElementById("particles");
 
-      particle.classList.add("particle");
 
-      particle.style.left =
-        Math.random() * 100 + "%";
+        for (let i = 0; i < 70; i++) {
 
-      particle.style.top =
-        Math.random() * 100 + "%";
+            const particle =
+                document.createElement("div");
 
-      particle.style.animationDelay =
-        Math.random() * 6 + "s";
 
-      particle.style.animationDuration =
-        4 + Math.random() * 5 + "s";
+            particle.className =
+                "particle";
 
-      particle.style.opacity =
-        0.2 + Math.random() * 0.5;
 
-      particlesContainer.appendChild(
-        particle
-      );
-    }
+            particle.style.left =
+                Math.random() * 100 + "%";
 
-  </script>
+
+            particle.style.animationDuration =
+                (8 + Math.random() * 15) + "s";
+
+
+            particle.style.animationDelay =
+                (Math.random() * 12) + "s";
+
+
+            const size =
+                1 + Math.random() * 2.5;
+
+
+            particle.style.width =
+                size + "px";
+
+
+            particle.style.height =
+                size + "px";
+
+
+            particleContainer.appendChild(particle);
+
+        }
+
+
+    </script>
+
 
 </body>
 </html>
